@@ -15,8 +15,7 @@ public class sensor
             ServerSocket s_server = new ServerSocket(5151);
 
 
-            while(true)
-            {
+            while(true) {
             /*
             sensor here is listening to server requests and then send readings
              */
@@ -27,26 +26,26 @@ public class sensor
                 DataOutputStream sensor_data_os = new DataOutputStream(s1.getOutputStream());
 
                 System.out.println("SENSOR ACCEPTED REQ");
-                String usr_msg = sensor_data_is.readUTF();
-                System.out.println("server as Client says:" + usr_msg);
-                sensor_data_os.writeUTF("Server says:" + usr_msg);
-                sensor_data_os.flush();
-                if (usr_msg.equals("bye"))
-                {
-                    break;
+                while (true) {
+                    String usr_msg = sensor_data_is.readUTF();
+                    System.out.println("server as Client says:" + usr_msg);
+
+                    sensor_data_os.writeUTF("Here is the readings from sensors: 123 ");
+                    sensor_data_os.flush();
+                    System.out.println("BEFORE LOOOOOPING AGAIN");
+
+
+                    if (usr_msg.equals("bye")) {
+                        break;
+                    }
+
+
                 }
 
-
-
-
+                s_server.close();
 
 
             }
-
-            s_server.close();
-
-
-
         }
 
 
