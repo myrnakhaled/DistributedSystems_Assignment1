@@ -29,12 +29,13 @@ public class server
             //request(data input stream from the driver) + //recommendation output stream to the computer
             DataInputStream server_data_is = new DataInputStream(s1.getInputStream());
             DataOutputStream server_data_os = new DataOutputStream(s1.getOutputStream());
-
             System.out.println("SERVER ACCEPTED REQ");
+            while(true)
+            {
             //get request stream from computer client
-           // String str =  server_data_is.readUTF();
-            System.out.println("from server :here is the received req...");
-            System.out.println("Recommendation request in the server side= ASSUME YA3AM" );
+            String str =  server_data_is.readUTF();
+            System.out.println("from server :here is the received req..." + str);
+
 
 
             /*
@@ -47,7 +48,9 @@ public class server
             //flush the content of the buffer to the output stream
             dos_asclient_request.flush();
             String sensor_respond = dis_asclient_reading.readUTF();
-            System.out.println(sensor_respond);
+            System.out.println("sensor_responds:" + sensor_respond);
+
+
             if(read_request.equals("bye"))
                 break;
 
@@ -55,8 +58,12 @@ public class server
 
         }
 
-             s_server.close();
-             as_client.close();
+            s_server.close();
+            as_client.close();
+
+        }
+
+
 
 
     }
