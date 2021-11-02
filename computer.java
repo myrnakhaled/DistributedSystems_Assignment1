@@ -31,9 +31,14 @@ public class computer
             //get the recommendation from the server
             System.out.println("driver waiting for recommendation..");
             String server_respond = dis_rec.readUTF();
-            System.out.println(server_respond);
+            
+            System.out.println("the server respond for recommendation:" + server_respond);
+            System.out.println("finally the driver receives the rec:)");
+
             if(read_request.equals("bye"))
                 break;
+
+
 
 
         }
@@ -45,3 +50,4 @@ public class computer
 
     }
 }
+
